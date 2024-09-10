@@ -1,24 +1,15 @@
-    const express = require('express');
-    const bodyParser = require('body-parser');
+const express = require("express");
+const axios = require("axios");
+const request = require('request');
+const path = require("path");
+const app = express();
 
-    const app = express();
-    const port = process.env.PORT || 3000;
+app.use(express.json());
+app.get("/", (req, res)=>{
+    //res.send("hi Jesus");
+    res.sendFile(path.join(__dirname + "/index.html"));
+});
 
-    // Middleware para parsear el cuerpo de las solicitudes como JSON
-    app.use(bodyParser.json());
-
-    // Ruta para manejar el webhook
-    app.post('/webhook', (req, res) => {
-        const data = req.body;
-
-        // Procesar los datos recibidos
-        console.log('Datos recibidos del webhook:', data);
-
-        // Responder al webhook
-        res.status(200).json({ status: 'success' });
-    });
-
-    // Iniciar el servidor
-    app.listen(port, () => {
-        console.log(`Servidor escuchando en http://localhost:${port}`);
-    });
+app.listen(3000, ()=>{
+    console.log("server running  on port --> ", 3000);
+});
