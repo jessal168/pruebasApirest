@@ -6,8 +6,8 @@ const app = express();
 
 app.use(express.json());
 app.get("/", (req, res)=>{
-    //res.send("hi Jesus");
-    res.sendFile(path.join(__dirname + "/index.html"));
+    res.send("hi Jesus");
+    //res.sendFile(path.join(__dirname + "/index.html"));
 });
 
 app.listen(3000, ()=>{
